@@ -1,6 +1,9 @@
-# <h1 align="center">x0Drop <img src="assets/app-icon.png" width="20px"></h1>
+# <h1 align="center">x0Drop 📤</h1>
 
 > 📤 x0Drop is a desktop client for `x0.at`, built with Electron, React, and Vite, focused on fast uploads, local history, and a cleaner desktop workflow.
+
+
+> 💡 Sharing files with x0.at from the CLI is fast and awesome… but not everyone enjoys typing commands just to send a file.
 
 <center><img alt="x0Drop" src="assets/desktop.png"/></center>
 
@@ -8,35 +11,13 @@
 
 ## ✨ Features
 
-- Drag & drop file staging  
-- Native file picker support  
-- Upload history stored locally per machine  
-- Automatic link copy after upload  
-- Link opening and history removal actions  
-- File size preview in upload modal and history  
-- Duplicate file detection using SHA-256 hash  
-- Upload availability indicator (`Available`, `Offline`, `Blocked`, `Unreachable`)  
-- Estimated retention countdown based on x0.at retention rules  
-- Upload status toasts and animated modal transitions  
-
----
-
-## 🔐 Notes
-
-- Files are uploaded to `https://x0.at/`  
-- Upload history is stored locally on the device  
-- Duplicate detection is based on a locally stored SHA-256 file hash  
-- Browser fallback mode is available during development, but the intended experience is the Electron app  
-
----
-
-## 📦 Upload Behavior
-
-- Drag files to stage them before sending  
-- File size is shown before upload  
-- Uploaded links are copied automatically  
-- Duplicate files already present in history are skipped  
-- Local history keeps upload date, file size, retention estimate, and remote URL  
+- 📤 Drag & drop uploads with instant link copy  
+- 🕓 Local history of all uploads  
+- 📏 File size preview before sending  
+- 🧠 Duplicate detection (SHA-256)  
+- ⏳ Retention countdown based on x0.at rules  
+- 🟢 Upload status indicator (online/offline)  
+- 🔗 Quick access to links (open & remove)  
 
 ---
 

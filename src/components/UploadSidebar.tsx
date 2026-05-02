@@ -32,7 +32,7 @@ export function UploadSidebar({
 					<span>{statusTitle}</span>
 				</div>
 			</div>
-			<h1>x0 Desktop</h1>
+			<h1>x0Drop</h1>
 			<p>Drop files</p>
 			<input ref={fileInputRef} className="hiddenFileInput" type="file" multiple onChange={onFileInputChange} />
 			<button className="picker" onClick={onPickFiles} disabled={isSending}>
