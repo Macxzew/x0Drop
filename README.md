@@ -16,17 +16,18 @@
 - 📏 File size preview before sending  
 - 🧠 Duplicate detection (SHA-256)  
 - ⏳ Retention countdown based on x0.at rules  
-- 🟢 Upload status indicator (online/offline)  
+- 🟢 Upload availability indicator (available/offline/blocked/unreachable)  
 - 🔗 Quick access to links (open & remove)  
+- 🔐 Optional client-side encryption (`.x0e`) with separate decryption key  
+- ♻️ Recovery panel: download + decrypt from a link/ID (and keep a local recovery history)  
 
 ---
 
-## 🌐 Availability States
+## 📌 Notes
 
-- `Available`: upload route looks reachable  
-- `Offline`: no network connection detected  
-- `Blocked`: remote service appears rate-limited or access-restricted  
-- `Unreachable`: remote service or proxy could not be reached  
+- **Encrypted uploads (`.x0e`)**: file is encrypted locally, uploaded as `.x0e`, and you must keep the link + decryption key separately.
+- **Recover / decrypt**: paste a `https://x0.at/...` link (or raw ID); if it’s an x0Drop `.x0e`, you’ll be prompted for the key.
+- **Local history**: stored on your machine (Electron `userData` as `uploads.json` / `downloads.json`; browser mode uses `localStorage`).
 
 ---
 
@@ -58,6 +59,12 @@ To build the application locally:
 
 ```shell
 npm run build
+```
+
+### 🧹 Clean (Reset local build artifacts)
+
+```shell
+npm run clean
 ```
 
 ### 4️⃣ Platform Packages
