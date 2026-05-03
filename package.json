@@ -1,66 +1,66 @@
 {
-  "name": "x0drop",
-  "version": "0.1.0",
-  "description": "Desktop client for x0.at uploads with history and retention tracking.",
-  "main": "dist-electron/main/index.js",
-  "author": "Macxzew",
-  "license": "MIT",
-  "type": "module",
-  "scripts": {
-    "dev": "concurrently -k \"tsc -p tsconfig.electron.json --watch --preserveWatchOutput\" \"vite\" \"wait-on tcp:5173 dist-electron/main/index.js && electron .\"",
-    "start": "npm run dev",
-    "build": "vite build && tsc -p tsconfig.electron.json",
-    "build-win": "npm run build && npx @electron/packager . \"x0 Desk\" --platform=win32 --arch=x64 --out=release --overwrite && if [ -d \"release/x0 Desk-win32-x64\" ]; then cd \"release/x0 Desk-win32-x64\" && rm -f chrome_100_percent.pak chrome_200_percent.pak d3dcompiler_47.dll libEGL.dll libGLESv2.dll LICENSE LICENSES.chromium.html snapshot_blob.bin version version.dll vk_swiftshader.dll vk_swiftshader_icd.json vulkan-1.dll; else echo \"Folder does not exist\"; fi",
-    "build-mac": "npm run build && npx @electron/packager . \"x0 Desk\" --platform=darwin --arch=x64 --out=release --overwrite && if [ -d \"release/x0 Desk-darwin-x64\" ]; then cd \"release/x0 Desk-darwin-x64\" && rm -f LICENSE LICENSES.chromium.html version; else echo \"Folder does not exist\"; fi",
-    "build-lin": "npm run build && npx @electron/packager . \"x0 Desk\" --platform=linux --arch=x64 --out=release --overwrite && if [ -d \"release/x0 Desk-linux-x64\" ]; then cd \"release/x0 Desk-linux-x64\" && rm -f LICENSE LICENSES.chromium.html version; else echo \"Folder does not exist\"; fi",
-    "build-all": "npm run build-win && npm run build-lin && npm run build-mac",
-    "clean": "rimraf dist dist-electron release package-lock.json node_modules"
-  },
-  "dependencies": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
-  },
-  "devDependencies": {
-    "@electron/packager": "^18.3.6",
-    "@types/node": "^24.7.2",
-    "@types/react": "^19.2.2",
-    "@types/react-dom": "^19.2.2",
-    "@vitejs/plugin-react": "^5.0.4",
-    "concurrently": "^9.2.1",
-    "electron": "^41.5.0",
-    "electron-builder": "^26.0.12",
-    "rimraf": "^6.0.1",
-    "tailwindcss": "^4.1.14",
-    "typescript": "^5.9.3",
-    "vite": "^7.1.10",
-    "wait-on": "^9.0.1"
-  },
-  "build": {
-    "appId": "com.x0desk.app",
-    "productName": "x0 Desk",
-    "files": [
-      "dist/**",
-      "dist-electron/**",
-      "package.json"
-    ],
-    "directories": {
-      "buildResources": "build"
-    },
-    "mac": {
-      "target": [
-        "dmg"
-      ]
-    },
-    "linux": {
-      "target": [
-        "AppImage"
-      ],
-      "category": "Utility"
-    },
-    "win": {
-      "target": [
-        "nsis"
-      ]
-    }
-  }
+	"name": "x0drop",
+	"version": "1.0.0",
+	"description": "Desktop client for x0.at uploads with history and retention tracking.",
+	"main": "dist-electron/main/index.js",
+	"author": "Macxzew",
+	"license": "MIT",
+	"type": "module",
+	"scripts": {
+		"dev": "concurrently -k \"tsc -p tsconfig.electron.json --watch --preserveWatchOutput\" \"vite\" \"wait-on tcp:5173 dist-electron/main/index.js && electron .\"",
+		"start": "npm run dev",
+		"build": "vite build && tsc -p tsconfig.electron.json",
+		"build-win": "npm run build && npx @electron/packager . \"x0 Desk\" --platform=win32 --arch=x64 --out=release --overwrite && if [ -d \"release/x0 Desk-win32-x64\" ]; then cd \"release/x0 Desk-win32-x64\" && rm -f chrome_100_percent.pak chrome_200_percent.pak d3dcompiler_47.dll libEGL.dll libGLESv2.dll LICENSE LICENSES.chromium.html snapshot_blob.bin version version.dll vk_swiftshader.dll vk_swiftshader_icd.json vulkan-1.dll; else echo \"Folder does not exist\"; fi",
+		"build-mac": "npm run build && npx @electron/packager . \"x0 Desk\" --platform=darwin --arch=x64 --out=release --overwrite && if [ -d \"release/x0 Desk-darwin-x64\" ]; then cd \"release/x0 Desk-darwin-x64\" && rm -f LICENSE LICENSES.chromium.html version; else echo \"Folder does not exist\"; fi",
+		"build-lin": "npm run build && npx @electron/packager . \"x0 Desk\" --platform=linux --arch=x64 --out=release --overwrite && if [ -d \"release/x0 Desk-linux-x64\" ]; then cd \"release/x0 Desk-linux-x64\" && rm -f LICENSE LICENSES.chromium.html version; else echo \"Folder does not exist\"; fi",
+		"build-all": "npm run build-win && npm run build-lin && npm run build-mac",
+		"clean": "rimraf dist dist-electron release package-lock.json node_modules"
+	},
+	"dependencies": {
+		"react": "^19.2.0",
+		"react-dom": "^19.2.0"
+	},
+	"devDependencies": {
+		"@electron/packager": "^18.3.6",
+		"@types/node": "^24.7.2",
+		"@types/react": "^19.2.2",
+		"@types/react-dom": "^19.2.2",
+		"@vitejs/plugin-react": "^5.0.4",
+		"concurrently": "^9.2.1",
+		"electron": "^41.5.0",
+		"electron-builder": "^26.0.12",
+		"rimraf": "^6.0.1",
+		"tailwindcss": "^4.1.14",
+		"typescript": "^5.9.3",
+		"vite": "^7.1.10",
+		"wait-on": "^9.0.1"
+	},
+	"build": {
+		"appId": "com.x0desk.app",
+		"productName": "x0 Desk",
+		"files": [
+			"dist/**",
+			"dist-electron/**",
+			"package.json"
+		],
+		"directories": {
+			"buildResources": "build"
+		},
+		"mac": {
+			"target": [
+				"dmg"
+			]
+		},
+		"linux": {
+			"target": [
+				"AppImage"
+			],
+			"category": "Utility"
+		},
+		"win": {
+			"target": [
+				"nsis"
+			]
+		}
+	}
 }
