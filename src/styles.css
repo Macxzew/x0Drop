@@ -225,6 +225,13 @@ button:disabled {
 	padding: 16px;
 }
 
+.contentColumn {
+	display: grid;
+	grid-template-rows: auto minmax(0, 1fr);
+	gap: 16px;
+	min-width: 0;
+}
+
 .infoButton {
 	position: absolute;
 	top: 14px;
@@ -342,6 +349,41 @@ button:disabled {
 	display: none;
 }
 
+.toggleCard {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	gap: 12px;
+	align-items: start;
+	width: 100%;
+	padding: 12px;
+	border: 1px solid var(--border);
+	border-radius: 16px;
+	background: rgba(255, 255, 255, 0.03);
+	text-align: left;
+}
+
+.toggleCard input {
+	margin-top: 3px;
+}
+
+.toggleCard strong,
+.toggleCard small {
+	display: block;
+}
+
+.toggleCard small {
+	margin-top: 4px;
+	color: var(--text-dim);
+	line-height: 1.4;
+}
+
+.stageToggleCard {
+	width: 100%;
+	max-width: 360px;
+	text-align: left;
+}
+
+
 .statusDot {
 	width: 9px;
 	height: 9px;
@@ -355,7 +397,87 @@ button:disabled {
 	display: flex;
 	flex-direction: column;
 	min-height: 100%;
+	min-height: 0;
 	padding: 18px;
+}
+
+.recoveryPanel {
+	display: grid;
+	gap: 14px;
+	border-radius: 18px;
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	background: rgba(255, 255, 255, 0.025);
+	padding: 18px;
+}
+
+.recoveryForm {
+	display: grid;
+	grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) auto;
+	gap: 10px;
+}
+
+.recoveryInput {
+	width: 100%;
+	padding: 11px 12px;
+	border: 1px solid var(--border);
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.03);
+	color: inherit;
+	outline: 0;
+}
+
+.recoveryInput::placeholder {
+	color: var(--text-dim);
+}
+
+.recoveryInput:focus {
+	border-color: rgba(143, 214, 242, 0.35);
+	background: rgba(255, 255, 255, 0.05);
+}
+
+.recoveryHistory {
+	display: grid;
+	gap: 6px;
+	min-height: 0;
+}
+
+.recoveryHistoryTitle {
+	color: var(--text-dim);
+	font-size: 0.84rem;
+}
+
+.historyScrollArea {
+	min-height: 0;
+	max-height: 100%;
+	overflow-y: auto;
+	padding-right: 6px;
+	scrollbar-width: thin;
+	scrollbar-color: rgba(143, 214, 242, 0.24) transparent;
+}
+
+.historyScrollArea::-webkit-scrollbar {
+	width: 10px;
+}
+
+.historyScrollArea::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.historyScrollArea::-webkit-scrollbar-thumb {
+	border-radius: 999px;
+	border: 2px solid transparent;
+	background: rgba(143, 214, 242, 0.22);
+	background-clip: padding-box;
+}
+
+.historyScrollArea::-webkit-scrollbar-thumb:hover {
+	background: rgba(143, 214, 242, 0.34);
+	background-clip: padding-box;
+}
+
+.compactSearchBar {
+	margin-top: 2px;
+	margin-bottom: 4px;
 }
 
 .searchBar {
@@ -434,6 +556,21 @@ button:disabled {
 	flex-shrink: 0;
 	font-size: 0.8rem;
 	color: var(--text-dim);
+}
+
+.secureBadge,
+.secureCaption {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid rgba(143, 214, 242, 0.22);
+	border-radius: 999px;
+	padding: 4px 8px;
+	color: var(--accent);
+	background: rgba(143, 214, 242, 0.08);
+	font-size: 0.74rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
 }
 
 .meta strong {
@@ -624,6 +761,10 @@ button:disabled {
 	display: block;
 	margin-top: 6px;
 	font-size: 1rem;
+}
+
+.secureCaption {
+	font-size: 0.72rem;
 }
 
 .confirm {
@@ -986,6 +1127,10 @@ button:disabled {
 	}
 
 	.profileGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.recoveryForm {
 		grid-template-columns: 1fr;
 	}
 

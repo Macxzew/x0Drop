@@ -11,6 +11,11 @@ export default defineConfig({
 				target: "https://x0.at",
 				changeOrigin: true,
 				rewrite: () => "/"
+			},
+			"/__x0_download__": {
+				target: "https://x0.at",
+				changeOrigin: true,
+				rewrite: (incomingPath) => incomingPath.replace(/^\/__x0_download__/, "")
 			}
 		}
 	},

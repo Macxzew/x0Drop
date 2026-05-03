@@ -16,6 +16,8 @@ export type CreditProfile = {
 
 export const X0_UPLOAD_URL = "https://x0.at/";
 export const X0_UPLOAD_PROXY_PATH = "/__x0_upload__";
+export const X0_DOWNLOAD_PREFIX = "https://x0.at/";
+export const X0_DOWNLOAD_PROXY_PREFIX = "/__x0_download__/";
 const MIN_AGE_DAYS = 3;
 const MAX_AGE_DAYS = 100;
 const MAX_FILE_SIZE_BYTES = 1024 * 1024 * 1024;
@@ -108,6 +110,47 @@ export function resolveUploadUrl(apiAvailable: boolean) {
 	// Routage upload
 	if (apiAvailable) return X0_UPLOAD_URL;
 	if (import.meta.env.DEV) return X0_UPLOAD_PROXY_PATH;
+	return null;
+}
+
+export function normalizeX0Source(input: string) {
+	const trimmed = input.trim();
+	if (!trimmed) {
+		throw new Error("Provide an x0.at link or ID.");
+	}
+
+	if (/^https?:\/\//i.test(trimmed)) {
+		const parsed = new URL(trimmed);
+		if (parsed.hostname !== "x0.at") {
+			throw new Error("Only x0.at links are supported here.");
+		}
+		if (!parsed.pathname || parsed.pathname === "/") {
+			throw new Error("Missing x0.at file identifier.");
+		}
+		return `${X0_DOWNLOAD_PREFIX}${parsed.pathname.replace(/^\/+/, "")}`;
+	}
+
+	if (/^x0\.at\//i.test(trimmed)) {
+		return `${X0_DOWNLOAD_PREFIX}${trimmed.replace(/^x0\.at\//i, "")}`;
+	}
+
+	if (/^[A-Za-z0-9._-]+$/.test(trimmed)) {
+		return `${X0_DOWNLOAD_PREFIX}${trimmed}`;
+	}
+
+	throw new Error("Use `https://x0.at/...`, `x0.at/...`, or the raw x0.at ID.");
+}
+
+export function resolveDownloadFetchUrl(sourceUrl: string, apiAvailable: boolean) {
+	if (apiAvailable) {
+		return sourceUrl;
+	}
+
+	if (import.meta.env.DEV) {
+		const parsed = new URL(sourceUrl);
+		return `${X0_DOWNLOAD_PROXY_PREFIX}${parsed.pathname.replace(/^\/+/, "")}`;
+	}
+
 	return null;
 }
 

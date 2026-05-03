@@ -13,6 +13,7 @@ export function AppToast({ toast, isClosing }: AppToastProps) {
 			<div className="toastHead">
 				<strong>{toast.title}</strong>
 			</div>
+			{toast.detail && <div className="toastDetail">{toast.detail}</div>}
 		</div>
 	);
 }

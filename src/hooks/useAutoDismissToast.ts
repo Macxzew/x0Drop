@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import type { ToastState } from "../appTypes";
 
 export function useAutoDismissToast(toast: ToastState | null, closeToast: () => void) {

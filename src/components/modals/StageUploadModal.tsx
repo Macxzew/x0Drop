@@ -7,9 +7,11 @@ type StageUploadModalProps = {
 	stagedCountLabel: string;
 	stagedFiles: FileDropItem[];
 	stagedRetention: RetentionState | null;
+	encryptBeforeUpload: boolean;
 	isClosingStage: boolean;
 	isSending: boolean;
 	onClose: () => void;
+	onEncryptBeforeUploadChange: (value: boolean) => void;
 	onUpload: (files: FileDropItem[]) => void | Promise<void>;
 };
 
@@ -18,9 +20,11 @@ export function StageUploadModal({
 	stagedCountLabel,
 	stagedFiles,
 	stagedRetention,
+	encryptBeforeUpload,
 	isClosingStage,
 	isSending,
 	onClose,
+	onEncryptBeforeUploadChange,
 	onUpload
 }: StageUploadModalProps) {
 	if (!primaryStagedFile) return null;
@@ -57,6 +61,19 @@ export function StageUploadModal({
 						<span>Auto delete</span>
 						<strong>{stagedRetention ? formatExpiry(stagedRetention.expiresAt) : "Calculating..."}</strong>
 					</div>
+					<label className="toggleCard stageToggleCard">
+						<input
+							type="checkbox"
+							checked={encryptBeforeUpload}
+							onChange={(event) => onEncryptBeforeUploadChange(event.target.checked)}
+							disabled={isSending}
+						/>
+						<span>
+							<strong>Encrypt file before upload</strong>
+							<small>x0.at receives only an unreadable `.x0e` payload.</small>
+						</span>
+					</label>
+					{encryptBeforeUpload && <div className="secureCaption">Encrypted container upload enabled</div>}
 
 					<button className="confirm" onClick={() => void onUpload(stagedFiles)} disabled={isSending}>
 						{isSending ? (
