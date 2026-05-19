@@ -398,26 +398,26 @@ async function downloadFromLink(payload: { source: string; secretKey?: string | 
 	const recordHistory = payload.recordHistory ?? true;
 	const record = recordHistory
 		? await insertDownload({
-				fileName: path.basename(savePath),
-				fileSize: outputBuffer.byteLength,
-				savedPath: savePath,
-				sourceUrl,
-				x0Id: new URL(sourceUrl).pathname.replace("/", ""),
-				encrypted,
-				secretKey,
-				downloadedAt: new Date().toISOString()
-			})
+			fileName: path.basename(savePath),
+			fileSize: outputBuffer.byteLength,
+			savedPath: savePath,
+			sourceUrl,
+			x0Id: new URL(sourceUrl).pathname.replace("/", ""),
+			encrypted,
+			secretKey,
+			downloadedAt: new Date().toISOString()
+		})
 		: normalizeDownloadRecord({
-				id: 0,
-				fileName: path.basename(savePath),
-				fileSize: outputBuffer.byteLength,
-				savedPath: savePath,
-				sourceUrl,
-				x0Id: new URL(sourceUrl).pathname.replace("/", ""),
-				encrypted,
-				secretKey,
-				downloadedAt: new Date().toISOString()
-			});
+			id: 0,
+			fileName: path.basename(savePath),
+			fileSize: outputBuffer.byteLength,
+			savedPath: savePath,
+			sourceUrl,
+			x0Id: new URL(sourceUrl).pathname.replace("/", ""),
+			encrypted,
+			secretKey,
+			downloadedAt: new Date().toISOString()
+		});
 
 	showCompletionNotification(
 		decrypted ? "File decrypted" : "File downloaded",
@@ -540,11 +540,11 @@ ipcMain.handle("system:copy", (_event, value: string) => clipboard.writeText(val
 ipcMain.handle("files:pick", async () => {
 	const result = mainWindow
 		? await dialog.showOpenDialog(mainWindow, {
-				properties: ["openFile", "multiSelections"]
-			})
+			properties: ["openFile", "multiSelections"]
+		})
 		: await dialog.showOpenDialog({
-				properties: ["openFile", "multiSelections"]
-			});
+			properties: ["openFile", "multiSelections"]
+		});
 
 	if (result.canceled) {
 		return [];
